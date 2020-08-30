@@ -1,6 +1,4 @@
-
 <!DOCTYPE html>
-
 <html>
 <head>
 	<title></title>
@@ -37,12 +35,13 @@
 	</div>
 
 	<div class="table-responsive">
-		<table class="table table-bordered table-striped text-center" id="tbval">
+		<table class="table table-bordered table-striped" id="tbval">
 			<tr> 
 				<th> Votes </th>
-				<th> Title of Questions </th>
+				<th> Title of Question </th>
 				<th> Asked By </th>
-				<th> Answered? </th>
+				<th> Question Preview </th>
+				<th> Top Answer Preview </th>
 			</tr>
 
 		</table>
@@ -54,10 +53,12 @@
 
 <script type="text/javascript">
 
+const url = 'https://api.stackexchange.com/2.2/questions?pagesize=10&order=desc&sort=week&tagged=android&site=stackoverflow&filter=!UHY-aKsFJ(KvceZ5uauvPwwy.asT*hES7ssa6RsGwkSch3Pb5go9mnNdeTytv9zGbkfDX57KUq';
 
+//'https://api.stackexchange.com/2.2/questions?pagesize=10&order=desc&sort=week&tagged=android&site=stackoverflow&filter=!*SU8CGYZitCB.D*(BDVIfh2KKqQ)7jqYCBJzAPqv1FF5P6ymFq8a9Bc8edrbS03CI27qgG*u';
 
-const url =
-      'https://api.stackexchange.com/2.2/questions?page=1&pagesize=10&order=desc&sort=week&tagged=android&site=stackoverflow';
+//'https://api.stackexchange.com/2.2/questions?pagesize=10&order=desc&sort=week&tagged=android&site=stackoverflow&filter=!*SU8CGYZitCB.D*(BDVIfh2KKqQ)7jqYCBJzAPqv1FF5P6ymFq8a9Bc8edtQc*PqJ)28g05P';
+      //'https://api.stackexchange.com/2.2/questions?page=1&pagesize=10&order=desc&sort=week&tagged=android&site=stackoverflow&filter=!--1nZwT40HJH';
 
 const questionList = document.createElement('ul');
 document.body.appendChild(questionList);
@@ -65,9 +66,9 @@ var i=1;
 const responseData = fetch(url).then(response => response.json());
 
 responseData.then(({items, has_more, quota_max, quota_remaining}) => {
-  for (const {title, score, owner, link, answer_count,is_answered} of items) {
-  	
+  for (const {title, score, answers, owner,body,is_answered,link} of items) {
   	var x = tbval.insertRow();
+    
     const listItem = document.createElement('li');
     questionList.appendChild(listItem);
     const a = document.createElement('a');
@@ -80,26 +81,63 @@ responseData.then(({items, has_more, quota_max, quota_remaining}) => {
 
 	// $('<a href="'+link+'">'+title+'</a>').appendTo($(tbval.rows[i].cells[1].innerHTML));
 
-//x.insertCell(1);
-var linky = document.createElement("a");
-linky.setAttribute("href", link)
-linky.className = "someCSSclass";
-// For IE only, you can simply set the innerText of the node.
-// The below code, however, should work on all browsers.
-var linkText = document.createTextNode(title);
-linky.appendChild(linkText);
-
+    //x.insertCell(1);
+	//tbval.rows[i].cells[1].innerHTML=title;
+	var linky = document.createElement("a");
+	linky.setAttribute("href", link)
+	linky.className = "someCSSclass";
+	var linkText = document.createTextNode(title);
+	linky.appendChild(linkText);
 // Add the link to the previously created TableCell.
-x.appendChild(linky)
+	x.appendChild(linky)
 
 	x.insertCell(1);
 	tbval.rows[i].cells[1].innerHTML=owner.display_name || 'somebody';
 
 	x.insertCell(2);
-	tbval.rows[i].cells[2].innerHTML=is_answered;
+	var newstr="";
+	body.replace( /(<([^>]+)>)/ig, '');
+	var l=600;
+	//var flag=1;
+
+	if(body.length<l){l=body.length;}
+	for (var k = 0; k<l; k++){
+    var strChar = body.charAt(k);
+        newstr += strChar;
+    }
+    
+	tbval.rows[i].cells[2].innerHTML=newstr;
+
+
+	x.insertCell(3);
+	newstr="";
+	//flag=1;
+	if(is_answered==true){
+	answers[0].body.replace( /(<([^>]+)>)/ig, '');
+	l=600;
+	if(answers[0].body.length<l){l=answers[0].body.length;}
+	for (var k = 0; k<l; k++){
+    var strChar = answers[0].body.charAt(k);
+        newstr += strChar;
+    }
+    
+    tbval.rows[i].cells[3].innerHTML= newstr;
+	}
+	else{
+		tbval.rows[i].cells[3].innerHTML= 'Not Found';
+	}
+	
+	//}
+
+
+
 	i++;
   }
+
 });
+	
+	
+
 
 </script>
 
