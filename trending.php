@@ -32,16 +32,14 @@
 
 <section class="stack_update containder-fluid">
 	<div class="mb-3">
-		<h4 class="text-center">Trending Android Experts</h4>
+		<h4 class="text-center">Most Active Android Tags</h4>
 	</div>
 
 	<div class="table-responsive">
-		<table class="table-bordered table-striped text-center" id="tbval">
+		<table class="table table-bordered table-striped text-center" id="tbval">
 			<tr> 
-				<th> Votes <th>
-				<th> Questions </th>
-				<th> Asked By </th>
-
+				<th> Tag Name </th>
+				<th> Total Popularity Count </th>
 			</tr>
 
 		</table>
@@ -55,21 +53,29 @@
 
 
 
-const url =
-      'https://api.stackexchange.com/2.2/users?pagesize=10&order=desc&sort=reputation&site=stackoverflow&tag=android';
+const url = 'https://api.stackexchange.com/2.2/tags?page=1&pagesize=11&order=desc&sort=activity&inname=android&site=stackoverflow';
 
 const questionList = document.createElement('ul');
 document.body.appendChild(questionList);
-
+var i=1;
 const responseData = fetch(url).then(response => response.json());
 responseData.then(({items, has_more, quota_max, quota_remaining}) => {
-  for (const {title, score, owner, link, answer_count} of items) {
+  for (const {name,count} of items) {
+
+    var x = tbval.insertRow();
     const listItem = document.createElement('li');
     questionList.appendChild(listItem);
     const a = document.createElement('a');
     listItem.appendChild(a);
-    a.href = link;
-    a.textContent = `[${score}] ${title} (by ${owner.display_name || 'somebody'})`
+    //a.href = link;
+    //a.textContent = `[${score}] ${title} (by ${owner.display_name || 'somebody'})`
+    if(i!=1){
+    x.insertCell(0);
+    tbval.rows[i].cells[0].innerHTML= name;
+
+    x.insertCell(1);
+    tbval.rows[i].cells[1].innerHTML= count;}
+    i++;
   }
 });
 
