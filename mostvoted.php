@@ -1,4 +1,6 @@
+
 <!DOCTYPE html>
+
 <html>
 <head>
 	<title></title>
@@ -15,11 +17,11 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto pr-5">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Latest Questions<span class="sr-only">(current)</span></a>
-      </li>
       <li class="nav-item">
-        <a class="nav-link" href="/stack/mostvoted.php">Most Voted Questions</a>
+        <a class="nav-link" href="/stack/index.php">Latest Questions</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Most Voted Questions<span class="sr-only">(current)</span></a>
 
       </li>
       <li class="nav-item">
@@ -31,7 +33,7 @@
 
 <section class="stack_update containder-fluid">
 	<div class="mb-3">
-		<h4 class="text-center">Latest Questions</h4>
+		<h4 class="text-center">Most Voted Questions Past Week</h4>
 	</div>
 
 	<div class="table-responsive">
@@ -49,9 +51,13 @@
 
 
 </section>
+
 <script type="text/javascript">
+
+
+
 const url =
-      'https://api.stackexchange.com/2.2/questions?page=1&pagesize=10&order=desc&sort=creation&tagged=android&site=stackoverflow';
+      'https://api.stackexchange.com/2.2/questions?page=1&pagesize=10&order=desc&sort=week&tagged=android&site=stackoverflow';
 
 const questionList = document.createElement('ul');
 document.body.appendChild(questionList);
@@ -69,6 +75,7 @@ responseData.then(({items, has_more, quota_max, quota_remaining}) => {
 });
 
 </script>
+
 
 </body>
 
