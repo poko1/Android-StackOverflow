@@ -25,7 +25,7 @@
 
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#" target="blank">Trending Tags</a>
+        <a class="nav-link" href="/stack/trending.php">Trending Tags</a>
       </li>
       
   </div>
@@ -37,12 +37,12 @@
 	</div>
 
 	<div class="table-responsive">
-		<table class="table-bordered table-striped text-center" id="tbval">
+		<table class="table table-bordered table-striped text-center" id="tbval">
 			<tr> 
-				<th> Votes <th>
-				<th> Questions </th>
+				<th> Votes </th>
+				<th> Title of Questions </th>
 				<th> Asked By </th>
-
+				<th> Answered? </th>
 			</tr>
 
 		</table>
@@ -61,16 +61,43 @@ const url =
 
 const questionList = document.createElement('ul');
 document.body.appendChild(questionList);
-
+var i=1;
 const responseData = fetch(url).then(response => response.json());
+
 responseData.then(({items, has_more, quota_max, quota_remaining}) => {
-  for (const {title, score, owner, link, answer_count} of items) {
+  for (const {title, score, owner, link, answer_count,is_answered} of items) {
+  	
+  	var x = tbval.insertRow();
     const listItem = document.createElement('li');
     questionList.appendChild(listItem);
     const a = document.createElement('a');
     listItem.appendChild(a);
     a.href = link;
-    a.textContent = `[${score}] ${title} (by ${owner.display_name || 'somebody'})`
+    //a.textContent = `[${score}] ${title} (by ${owner.display_name || 'somebody'}) ${is_answered}`
+    
+    x.insertCell(0);
+	tbval.rows[i].cells[0].innerHTML=score;
+
+	// $('<a href="'+link+'">'+title+'</a>').appendTo($(tbval.rows[i].cells[1].innerHTML));
+
+//x.insertCell(1);
+var linky = document.createElement("a");
+linky.setAttribute("href", link)
+linky.className = "someCSSclass";
+// For IE only, you can simply set the innerText of the node.
+// The below code, however, should work on all browsers.
+var linkText = document.createTextNode(title);
+linky.appendChild(linkText);
+
+// Add the link to the previously created TableCell.
+x.appendChild(linky)
+
+	x.insertCell(1);
+	tbval.rows[i].cells[1].innerHTML=owner.display_name || 'somebody';
+
+	x.insertCell(2);
+	tbval.rows[i].cells[2].innerHTML=is_answered;
+	i++;
   }
 });
 
