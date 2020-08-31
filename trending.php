@@ -63,10 +63,11 @@ responseData.then(({items, has_more, quota_max, quota_remaining}) => {
   for (const {name,count} of items) {
 
     var x = tbval.insertRow();
-    const listItem = document.createElement('li');
-    questionList.appendChild(listItem);
-    const a = document.createElement('a');
-    listItem.appendChild(a);
+    
+    //const listItem = document.createElement('li');
+    //questionList.appendChild(listItem);
+    //const a = document.createElement('a');
+    //listItem.appendChild(a);
     //a.href = link;
     //a.textContent = `[${score}] ${title} (by ${owner.display_name || 'somebody'})`
     if(i!=1){
