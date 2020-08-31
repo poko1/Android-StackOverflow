@@ -53,7 +53,8 @@
 
 <script type="text/javascript">
 
-const url = 'https://api.stackexchange.com/2.2/questions?pagesize=10&order=desc&sort=week&tagged=android&site=stackoverflow&filter=!UHY-aKsFJ(KvceZ5uauvPwwy.asT*hES7ssa6RsGwkSch3Pb5go9mnNdeTytv9zGbkfDX57KUq';
+const url = 'https://api.stackexchange.com/2.2/questions?pagesize=10&order=desc&sort=week&tagged=android&site=stackoverflow&filter=!2JjgH6x(iIUjZHSyKKGm.jtWlH1vZHa.dv(8-VrUO).wm0sBF_ldRdZlNsd(H8damzRhk(R2CpQ_*';
+//https://api.stackexchange.com/2.2/questions?pagesize=10&order=desc&sort=week&tagged=android&site=stackoverflow&filter=!UHY-aKsFJ(KvceZ5uauvPwwy.asT*hES7ssa6RsGwkSch3Pb5go9mnNdeTytv9zGbkfDX57KUq';
 
 //'https://api.stackexchange.com/2.2/questions?pagesize=10&order=desc&sort=week&tagged=android&site=stackoverflow&filter=!*SU8CGYZitCB.D*(BDVIfh2KKqQ)7jqYCBJzAPqv1FF5P6ymFq8a9Bc8edrbS03CI27qgG*u';
 
@@ -107,20 +108,45 @@ responseData.then(({items, has_more, quota_max, quota_remaining}) => {
     }
     
 	tbval.rows[i].cells[2].innerHTML=newstr;
-
+////////////////////////////////////////////////////////
 
 	x.insertCell(3);
 	newstr="";
 	//flag=1;
 	if(is_answered==true){
-	answers[0].body.replace( /(<([^>]+)>)/ig, '');
+		var base= answers[0].body;
+		
+		var len= answers.length;
+		if(len>1){
+			for(var j=1; j<len; j++){
+				if(answers[j-1].is_accepted==true && answers[j].is_accepted==false){
+					base= answers[j-1].body;
+
+				}
+				else if(answers[j-1].is_accepted==false && answers[j].is_accepted==true){
+					base= answers[j].body;
+				}
+				else{
+					if(answers[j-1].score>=answers[j].score){
+						base= answers[j-1].body;
+					}
+					else{
+						base= answers[j].body;
+					}
+				}
+			}
+
+			console.log(base);
+		}
+
+	base.replace( /(<([^>]+)>)/ig, '');
 	l=600;
-	if(answers[0].body.length<l){l=answers[0].body.length;}
+	if(base.length<l){l=base.length;}
 	for (var k = 0; k<l; k++){
-    var strChar = answers[0].body.charAt(k);
+    var strChar = base.charAt(k);
         newstr += strChar;
     }
-    
+    //newstr+=string(len);
     tbval.rows[i].cells[3].innerHTML= newstr;
 	}
 	else{
