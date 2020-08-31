@@ -35,13 +35,13 @@
 	</div>
 
 	<div class="table-responsive">
-		<table class="table table-bordered table-striped" id="tbval">
+		<table class="table table-bordered table-fit table-striped" id="tbval">
 			<tr> 
-				<th> Votes </th>
-				<th> Title of Question </th>
-				<th> Asked By </th>
-				<th> Question Preview </th>
-				<th> Top Answer Preview </th>
+				<th class="text-center"> Votes </th>
+				<th class="text-center"> Title of Question </th>
+				<th class="text-center"> Asked By </th>
+				<th class="text-center"> Question Preview </th>
+				<th class="text-center"> Top Answer Preview </th>
 			</tr>
 
 		</table>
