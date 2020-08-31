@@ -62,11 +62,11 @@ responseData.then(({items, has_more, quota_max, quota_remaining}) => {
   for (const {title, score, owner, link, body} of items) {
   	var x = tbval.insertRow();
 
-    const listItem = document.createElement('li');
-    questionList.appendChild(listItem);
-    const a = document.createElement('a');
-    listItem.appendChild(a);
-    a.href = link;
+    //const listItem = document.createElement('li');
+    //questionList.appendChild(listItem);
+    //const a = document.createElement('a');
+    //listItem.appendChild(a);
+    //a.href = link;
     //a.textContent = `[${score}] ${title} (by ${owner.display_name || 'somebody'})`;
 
     x.insertCell(0);
@@ -74,23 +74,26 @@ responseData.then(({items, has_more, quota_max, quota_remaining}) => {
 
 	// $('<a href="'+link+'">'+title+'</a>').appendTo($(tbval.rows[i].cells[1].innerHTML));
 
-//x.insertCell(1);
+    x.insertCell(1);
 	var linky = document.createElement("a");
 	linky.setAttribute("href", link)
-	linky.className = "someCSSclass";
+	//linky.className = "someCSSclass";
 // For IE only, you can simply set the innerText of the node.
 // The below code, however, should work on all browsers.
 	var linkText = document.createTextNode(title);
 	linky.appendChild(linkText);
 
 // Add the link to the previously created TableCell.
-	x.appendChild(linky)
+	tbval.rows[i].cells[1].appendChild(linky);
 
-	x.insertCell(1);
-	tbval.rows[i].cells[1].innerHTML=owner.display_name || 'somebody';
+
+
+
+	x.insertCell(2);
+	tbval.rows[i].cells[2].innerHTML=owner.display_name || 'somebody';
 
 //////////////////////////////////////////////////////
-	x.insertCell(2);
+	x.insertCell(3);
 	var newstr="";
 	body.replace( /(<([^>]+)>)/ig,'');
 	var l=600;
@@ -102,7 +105,7 @@ responseData.then(({items, has_more, quota_max, quota_remaining}) => {
         newstr += strChar;
     }
     
-	tbval.rows[i].cells[2].innerHTML=newstr;
+	tbval.rows[i].cells[3].innerHTML=newstr;
 
 	i++;
 
