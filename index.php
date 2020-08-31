@@ -37,11 +37,10 @@
 	<div class="table-responsive">
 		<table class="table table-bordered table-striped" id="tbval">
 			<tr> 
-				<th> Votes </th>
-				<th> Title of Question </th>
-				<th> Asked By </th>
-				<th> Question Preview </th>
-
+				<th class="text-center"> Votes </th>
+				<th class="text-center"> Title of Question </th>
+				<th class="text-center"> Asked By </th>
+				<th class="text-center"> Question Preview </th>
 			</tr>
 
 		</table>
@@ -93,7 +92,7 @@ responseData.then(({items, has_more, quota_max, quota_remaining}) => {
 //////////////////////////////////////////////////////
 	x.insertCell(2);
 	var newstr="";
-	body.replace( /(<([^>]+)>)/ig, '');
+	body.replace( /(<([^>]+)>)/ig,'');
 	var l=600;
 	//var flag=1;
 
