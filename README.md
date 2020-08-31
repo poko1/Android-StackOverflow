@@ -4,10 +4,10 @@ The tool is called ‘Android Updates on Stack Overflow.’ It is essentially a 
 
 # 1. Latest Questions: 
 On clicking this tab, the user is presented with a table that shows the top ten newest Android-related questions that have been asked. The table contains 4 separate columns: 
--Votes: This shows the total score/votes the question has gotten.
--Title of Question: This shows the title of the question that has been asked. On clicking the title, however, the user is directed to the Stack Overflow website to fully       view the thread.
--Asked By: This shows the name of the owner of this question. In case name is not provided, it is replaced with ‘Somebody’. 
--Question Preview: This shows a snippet of the body of the question asked. This allows the user to decide on whether he finds the thread interesting enough to visit the        website without cluttering the screen with the entire thread. HTML tags from the question body fetched via the API is removed first and then the table shows up to 600            characters.  
+..* Votes: This shows the total score/votes the question has gotten.
+..* Title of Question: This shows the title of the question that has been asked. On clicking the title, however, the user is directed to the Stack Overflow website to fully       view the thread.
+..* Asked By: This shows the name of the owner of this question. In case name is not provided, it is replaced with ‘Somebody’. 
+..* Question Preview: This shows a snippet of the body of the question asked. This allows the user to decide on whether he finds the thread interesting enough to visit the        website without cluttering the screen with the entire thread. HTML tags from the question body fetched via the API is removed first and then the table shows up to 600            characters.  
 
 
 # 2. Most Voted Questions: 
