@@ -98,7 +98,7 @@ responseData.then(({items, has_more, quota_max, quota_remaining}) => {
 	x.insertCell(2);
 	var newstr="";
 	body.replace( /(<([^>]+)>)/ig, '');
-	var l=600;
+	var l=300;
 	//var flag=1;
 
 	if(body.length<l){l=body.length;}
@@ -140,7 +140,7 @@ responseData.then(({items, has_more, quota_max, quota_remaining}) => {
 		}
 
 	base.replace( /(<([^>]+)>)/ig, '');
-	l=600;
+	l=300;
 	if(base.length<l){l=base.length;}
 	for (var k = 0; k<l; k++){
     var strChar = base.charAt(k);
