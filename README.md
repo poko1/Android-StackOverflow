@@ -11,7 +11,7 @@ On clicking this tab, the user is presented with a table that shows the top ten 
 
 * Asked By: This shows the name of the owner of this question. In case name is not provided, it is replaced with ‘Somebody’. 
 
-* Question Preview: This shows a snippet of the body of the question asked. This allows the user to decide on whether he finds the thread interesting enough to visit the        website without cluttering the screen with the entire thread. HTML tags from the question body fetched via the API is removed first and then the table shows up to 300            characters.  
+* Question Preview: This shows a snippet of the body of the question asked. This allows the user to decide on whether he finds the thread interesting enough to visit the        website without cluttering the screen with the entire thread. HTML tags from the question body fetched via the API is removed first and then the table shows up to 300            characters (full question body if it has less than 300 characters).  
 
 
 # 2. Most Voted Questions: 
@@ -25,7 +25,7 @@ On clicking this tab, the user is presented with a table that shows the top ten 
 
 * Question Preview: Same as before.
 
-* Top Answer Preview: This shows a snippet of the body of the top answer provided against the question asked. The acceptance status of all the answers are first checked, if     there is a tie (none has been accepted), the score of the answers are compared and the top one is shown. HTML tags from the body of the top answer fetched via the API is         removed first and then the table shows up to 300 characters. If, however, no answer is found, it says ‘Not Found’.
+* Top Answer Preview: This shows a snippet of the body of the top answer provided against the question asked. The acceptance status of all the answers are first checked, if     there is a tie (none has been accepted), the score of the answers are compared and the top one is shown. HTML tags from the body of the top answer fetched via the API is         removed first and then the table shows up to 300 characters (full answer body if it has less than 300 characters). If, however, no answer is found, it says ‘Not Found’.
 
 
 # 3. Trending Tags: 
