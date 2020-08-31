@@ -96,7 +96,7 @@ responseData.then(({items, has_more, quota_max, quota_remaining}) => {
 	x.insertCell(3);
 	var newstr="";
 	body.replace( /(<([^>]+)>)/ig,'');
-	var l=600;
+	var l=300;
 	//var flag=1;
 
 	if(body.length<l){l=body.length;}
