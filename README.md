@@ -48,6 +48,9 @@ The tool can be set up very easily following the steps below:
 * If folder and file names are left unchanged, no need to edit the .php files. Otherwise, update the file paths in the code for index.php, trending.php and     	         mostvoted.php
 
 
+*Apart from that, the website also has vertical and horizontal scroll bars and is adjustable to mobile screen*
+
+
 # APIs Used: 
 
 The API documentation of Stack Overflow was studied and necessary filters were custom added to retrieve desired data.
