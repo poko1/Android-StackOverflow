@@ -36,10 +36,6 @@ On clicking this tab, the user is presented with a table that shows the top ten 
 * Total Popularity Count: It shows the popularity score of the corresponding tag which helps the user to identify the all-time popular tags as well.
 
 
-
-*Apart from that, the website itself has vertical and horizontal scroll bars and it is also readjustible with phone screen.* 
-
-
 # How to Setup Tool: 
 The tool can be set up very easily following the steps below:
 
