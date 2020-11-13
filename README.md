@@ -1,6 +1,6 @@
 # Android-StackOverflow Tool
 
-The tool is called ‘Android Updates on Stack Overflow.’ It is essentially a simple website that fetches APIs of Stack Overflow to show on real-time the newest and most popular Android related updates, questions and tags. More specifically, the website has 3 sections:
+The tool is called ‘Android Updates on Stack Overflow'. It is essentially a simple website that fetches APIs of Stack Overflow to show on real-time the newest and most popular Android related updates, questions and tags. It has been hosted piblicly and can be viewed here: https://androidstackoverflow.000webhostapp.com/. More specifically, the website has 3 sections:
 
 # 1. Latest Questions: 
 On clicking this tab, the user is presented with a table that shows the top ten newest Android-related questions that have been asked. The table contains 4 separate columns:
